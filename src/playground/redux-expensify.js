@@ -1,6 +1,41 @@
-import { createStore, CombineReducers } from 'redux';
+import { createStore, combineReducers } from 'redux';
+////////////////////////////////////////////////////////////
+///expense reducer.
+///////////////////////////////////////////////////////////
+const defaultReducerState = [];
+const expenseReducer = (state = defaultReducerState, action) => {
+	switch (action.type) {
+		default:
+		   return state;
+	}
+}
+////////////////////////////////////////////////////////////////////////
+///filter reducer.
+///////////////////////////////////////////////////////////////////////
+const defaultfilterReducerState = {
+	text : '',
+	sortBy: 'date',
+	startDate: undefined,
+	endDate: undefined
 
-const demoState: {
+}
+const filterReducer = (state = defaultfilterReducerState, action) => {
+    switch (action.type) {
+    	default:
+    	   return state;
+    }
+}
+/////////////////////////////////////////////////////////////////////
+///creating the store for multiple reducers
+//////////////////////////////////////////////////////////////////////
+const store = createStore(
+	combineReducers({
+		expenses: expenseReducer,
+		filters : filterReducer
+	})
+	);
+console.log(store.getState());
+const demoState = {
 	expenses:[{
 		id: 'ammy',
 		description: 'january rent',
