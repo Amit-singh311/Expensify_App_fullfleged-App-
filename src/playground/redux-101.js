@@ -4,16 +4,25 @@ import { createStore } from 'redux';
 ///Action Generators
 ///I will have to destructure it to make it concise.
 ///////////////////////////////////////////////////////////////////////
-const incrementCount = (payload = {}) => {
+const incrementCount = ( {incrementBy = 1} = {} ) => {
 	return {
 		type: 'INCREMENT',
-		incrementBy : typeof payload.incrementBy === 'number' ? payload.incrementBy : 1
+		incrementBy 
 	}
 }
 
-const decrementCount = (payload = {}) => ({
+const decrementCount = ( {decrementBy = 1} = {}) => ({
 	type: 'DECREMENT',
-	decrementBy: typeof payload.decrementBy === 'number' ? payload.decrementBy: 1
+	decrementBy
+})
+
+const resetCount = () => ({
+	type: 'RESET'
+})
+
+const setCount = ({ count = 101} = {}) => ({
+	type: 'SET',
+	count
 })
 /*
 * createStore function needs an argument to execute similar to this.setState.
@@ -55,16 +64,11 @@ store.dispatch(incrementCount());
 
 store.dispatch(incrementCount({incrementBy : 5}));
 
-store.dispatch({
-	type: 'RESET'
-});
+store.dispatch(resetCount());
 
 store.dispatch( decrementCount({ decrementBy : 10 }) );
 
 store.dispatch( decrementCount());
 
-store.dispatch({
-	type: 'SET',
-	count: 101
-})
+store.dispatch( setCount({ count:25}))
 
