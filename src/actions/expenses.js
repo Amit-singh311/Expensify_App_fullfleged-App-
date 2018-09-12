@@ -9,7 +9,6 @@ export const addExpense = ( { description = '', note = '', amount = 0, createdAt
 		note,
 		amount,
 		createdAt
-
 	}
 });
 //Remove-Expense Generator
