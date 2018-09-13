@@ -9,6 +9,7 @@ import getVisibleExpenses from './selectors/expenses';
 import './styles/styles.css';
 
 const store = configureStore();
+console.log("test");
 console.log(store.getState());
 store.subscribe(() => {
 	const state = store.getState();
